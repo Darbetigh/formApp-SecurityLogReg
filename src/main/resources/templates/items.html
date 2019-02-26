@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>Items</title>
+    <link href="../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/users">Users</a></li>
+        <li><a href="/items/add">Add Item</a></li>
+    </ul>
+</nav>
+<!--
+<div class="container">
+    <table class="table">
+        <h2>Items</h2>
+        <tr>
+            <th>Item ID</th>
+            <th>Item Name</th>
+            <th>Belongs To</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.inventoryCode}">Item ID</td>
+            <td th:text="${item.type}">Item Name</td>
+            <td th:text="${item.user}">Belongs To</td>
+            <td><a class="btn btn-default" href="#" th:href="${'/widget/' + item.inventoryCode}">View</a> </td>
+            <td><a class="btn btn-default" href="#" th:href="${'/items/add/' + item.inventoryCode}">Edit</a> </td>
+            <td><a class="btn btn-default" href="#" th:href="${'/items/delete/' + item.inventoryCode}">Delete</a> </td>
+            <td><a class="btn btn-default" >
+                <form th:action="@{/items/} + ${item.id}" th:method="delete">
+                <input type="submit" value="Delete" name="delete" />
+                </form></a>
+            </td>
+        </tr>
+    </table>
+
+    <a th:href="${'/items/add'}" class="btn btn-default">New</a>
+</div>
+-->
+<!--
+<table>
+    <tr>
+        <th></th>
+        <th>Item code</th>
+        <th>Item type</th>
+        <th>Belongs to</th>
+        <th></th>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td>
+            <form th:action="@{/items/} + ${item.id}" th:method="delete">
+                <input type="submit" value="Delete" name="delete" />
+            </form>
+        </td>
+        <td th:text="${item.inventoryCode}">Item code</td>
+        <td th:text="${item.type}">Item type</td>
+        <td th:text="${item.user}">Belongs to</td>
+        <td>
+            <form th:action="@{/items/} + ${item.id}" th:method="put">
+                <select th:field="*{assignForm.username}">
+                    <option th:each="username : ${usernames}"
+                            th:value="${username}"
+                            th:text="${username}">Username will appear here
+                    </option>
+                </select>
+                <button type="submit">Assign</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="../static/js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+-->
+
+
+<table>
+    <tr>
+        <th></th>
+        <th>Item code</th>
+        <th>Item type</th>
+        <th>Belongs to</th>
+        <th></th>
+    </tr>
+    <tr th:each="item : ${items}">
+        <td>
+            <form th:action="@{/items/} + ${item.id}" th:method="delete">
+                <input type="submit" value="Delete" name="delete" />
+            </form>
+        </td>
+        <td th:text="${item.inventoryCode}">Item code</td>
+        <td th:text="${item.type}">Item type</td>
+        <td th:text="${item.user}">Belongs to</td>
+        <td>
+            <form th:action="@{/items/} + ${item.id}" th:method="put">
+                <select th:field="*{assignForm.username}">
+                    <option th:each="username : ${usernames}"
+                            th:value="${username}"
+                            th:text="${username}">Username</option>
+                </select>
+                <input type="submit" value="Assign" name="assign" />
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

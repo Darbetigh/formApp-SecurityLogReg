@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Users</title>
+</head>
+<body>
+<nav role="navigation">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/items">Items</a></li>
+        <li><a href="/register">Add User</a></li>
+    </ul>
+</nav>
+<table>
+    <tr>
+        <th>User name</th>
+        <th>Password</th>
+        <th>Name</th>
+        <th>Last name</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td>
+            <form th:action="@{/users/} + ${user.id}" th:method="delete">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+        <td th:text="${user.username}">Username</a></td>
+        <td th:text="${user.password}">Password</a></td>
+        <td th:text="${user.name}">Name</td>
+        <td th:text="${user.lastName}">Last Name</td>
+    </tr>
+</table>
+</body>
+</html>
